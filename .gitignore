@@ -1,0 +1,45 @@
+# Ignorar archivos y directorios generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de respaldo
+*~
+*.bak
+
+# Ignorar archivos de compilación
+*.o
+*.out
+*.exe
+
+# Ignorar directorios de dependencias y entornos virtuales
+/node_modules
+/venv
+/.venv
+
+# Ignorar archivos de configuración local
+.env
+config.local
+
+# Ignorar archivos de registro y salida
+/log
+/output
+
+# Ignorar archivos de credenciales
+*.key
+*.pem
+*.secret
+
+# Ignorar archivos de IDE y editores de texto
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignorar archivos y carpetas de compilación de Python
+__pycache__/
+
+# Ignorar la carpeta de compilación de Python
+*.pyc
+
+# Ignorar la carpeta de módulos que se usan para probar la aplicación
+modules/

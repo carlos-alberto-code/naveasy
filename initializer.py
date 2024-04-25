@@ -66,6 +66,9 @@ class Initializer:
     
     @property
     def initial_drawer_section_content(self) -> ft.Control:
+        '''
+        Devuelve el contenido de la sección del drawer que se seleccionó en el inicializador.
+        '''
         return self.initial_module.drawer_sections[self._drawer_index].content
 
     def __repr__(self) -> str:

@@ -1,9 +1,8 @@
-from typing import List
 import flet as ft
 
-from on_change_events import update_module, update_content
 from navigation_state_manager import NavigationStateManager
-from initializer      import Initializer
+from on_change_events import update_module, update_content
+from initializer import Initializer
 
 
 class NavigationStructureFactory:
@@ -15,15 +14,19 @@ class NavigationStructureFactory:
     #         cls._instance = super().__new__(cls)
     #     return cls._instance
 
+
     def __init__(self, initializer: Initializer) -> None:
-        self.init = initializer
-        self.state = NavigationStateManager()
-        self.state.destination_index = 10
-        self.state.drawer_index = 11
-        self.state.modules = self.init.modules
-        self.init_module = self.init.initial_module
+        self.init               = initializer
+
+        # Inyectamos los valores iniciales para el estado de la navegación.
+        self.state              = NavigationStateManager()
+        self.state.navbar_index = self.init.navbar_index 
+        self.state.drawer_index = self.init.drawer_index
+        self.state.modules      = self.init.modules
+
+        self.init_module        = self.init.initial_module # Módulo inicial.
     
-    def appbar(self, appbar_actions: List[ft.Control] = []):
+    def appbar(self, appbar_actions: list[ft.Control] = []):
         return ft.AppBar(
             center_title=True,
             title=ft.Text(f'{self.init_module.label}'),

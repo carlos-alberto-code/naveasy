@@ -16,7 +16,7 @@ class NavigationStateManager:
     def __init__(self) -> None:
         self._modules: list[Module]
         self._drawer_index: int
-        self._destination_index: int
+        self._navbar_index: int
     
     @property
     def modules(self) -> List[Module]:
@@ -35,16 +35,16 @@ class NavigationStateManager:
         self._drawer_index = index
 
     @property
-    def destination_index(self) -> int:
-        return self._destination_index
+    def navbar_index(self) -> int:
+        return self._navbar_index
     
-    @destination_index.setter
-    def destination_index(self, index: int) -> None:
-        self._destination_index = index
+    @navbar_index.setter
+    def navbar_index(self, index: int) -> None:
+        self._navbar_index = index
     
     @property
     def current_module(self) -> Module:
-        return self._modules[self._destination_index]
+        return self._modules[self._navbar_index]
     
     def __repr__(self) -> str:
-        return f'State(navbar_index={self.destination_index}, drawer_index={self.drawer_index})'
+        return f'State(navbar_index={self.navbar_index}, drawer_index={self.drawer_index})'

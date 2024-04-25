@@ -1,7 +1,7 @@
 import flet as ft
 from time import sleep
 
-from navigation_state import NavigationStateManager
+from navigation_state_manager import NavigationStateManager
 from page_events import PageEvents
     
 

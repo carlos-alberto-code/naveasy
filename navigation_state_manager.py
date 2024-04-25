@@ -14,9 +14,9 @@ class NavigationStateManager:
         return cls._instance
 
     def __init__(self) -> None:
-        self._modules = []
-        self._drawer_index = 0
-        self._destination_index = 0
+        self._modules: list[Module]     = []
+        self._drawer_index: int         = 0
+        self._destination_index: int    = 0
     
     @property
     def modules(self) -> List[Module]:

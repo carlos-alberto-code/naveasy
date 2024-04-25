@@ -2,7 +2,7 @@ from typing import List
 import flet as ft
 
 from on_change_events import update_module, update_content
-from navigation_state import NavigationStateManager
+from navigation_state_manager import NavigationStateManager
 from initializer      import Initializer
 
 

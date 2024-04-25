@@ -14,9 +14,9 @@ class NavigationStateManager:
         return cls._instance
 
     def __init__(self) -> None:
-        self._modules: list[Module]     = []
-        self._drawer_index: int         = 0
-        self._destination_index: int    = 0
+        self._modules: list[Module]
+        self._drawer_index: int
+        self._destination_index: int
     
     @property
     def modules(self) -> List[Module]:
@@ -47,5 +47,4 @@ class NavigationStateManager:
         return self._modules[self._destination_index]
     
     def __repr__(self) -> str:
-        return f'State(index={self._destination_index}, current_module={self.current_module.label})'
-    
+        return f'State(navbar_index={self.destination_index}, drawer_index={self.drawer_index})'

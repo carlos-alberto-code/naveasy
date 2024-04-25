@@ -6,6 +6,15 @@ from module import Module
 
 
 class Initializer:
+    """
+    Por ahora, los valores que se definan en el inicializador, serán los valores por defecto
+    a lo largo de toda la app, por ejemplo, el indice del drawer se tomará para que en cada cambio
+    de módulo, siempre se seleccione la sección que hace referencia a ese indice. Para eso se ha 
+    configurado un manejo de excepciones para que haya concordancia en todas las secciones.
+
+    En un futuro podemos establecer valores booleanos para determinar si una sección será la que
+    se seleccionará por defecto, esto para cada módulo.
+    """
 
     _instance = None
 

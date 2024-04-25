@@ -10,14 +10,16 @@ class NavigationStructureFactory:
 
     _instance = None
 
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
+    # def __new__(cls, *args, **kwargs):
+    #     if cls._instance is None:
+    #         cls._instance = super().__new__(cls)
+    #     return cls._instance
 
     def __init__(self, initializer: Initializer) -> None:
         self.init = initializer
         self.state = NavigationStateManager()
+        self.state.destination_index = 10
+        self.state.drawer_index = 11
         self.state.modules = self.init.modules
         self.init_module = self.init.initial_module
     

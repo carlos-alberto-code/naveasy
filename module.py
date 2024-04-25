@@ -14,12 +14,12 @@ class Section(ft.NavigationDrawerDestination):
 
 class Module(ft.NavigationDestination):
 
-    all = []
+    all_modules = []
 
     def __init__(self, label: str, icon: str, *sections: Section) -> None:
         super().__init__(label, icon)
         self._drawer_sections = sections
-        self.all.append(self)
+        self.all_modules.append(self)
     
     @property
     def drawer_sections(self):

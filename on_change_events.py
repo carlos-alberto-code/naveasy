@@ -26,10 +26,9 @@ def update_module(event: ft.ControlEvent):
 
 
 def update_content(event: ft.ControlEvent):
-    event.page.clean()
-    module_sections = state.current_module._drawer_sections
-    section = module_sections[event.page.drawer.selected_index]
-    event.page.add(section.content)
-    event.page.update()
-    event.page.drawer.open = False
-    event.page.update()
+    e.clear_page(event)
+    sections = state.current_module.drawer_sections
+    section = sections[event.page.drawer.selected_index]
+    # NOTE: No se debe cambiar el estado de NavigationStateManager.drawer_index
+    e.add_to_page(section.content, event)
+    e.update_page(event)

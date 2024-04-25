@@ -13,14 +13,16 @@ from modules import(
 
 def main(page: ft.Page):
 
-    modules     = Module.all
-    initializer = Initializer(modules=modules, navbar_index=1, drawer_index=1)
-    struct      = NavigationStructureFactory(initializer=initializer)
+    modules = Module.all
+    init    = Initializer(modules=modules, navbar_index=1, drawer_index=1)
+    print('En el main: ', init.navbar_index, init.drawer_index)
+    struct  = NavigationStructureFactory(initializer=init)
 
-    page.vertical_alignment = ft.MainAxisAlignment.CENTER
-    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.window_maximized = True
-    page.add(initializer.content)
+    page.vertical_alignment     = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment   = ft.CrossAxisAlignment.CENTER
+    page.window_maximized       = True
+
+    page.add(init.initial_drawer_section_content)
 
     page.navigation_bar = struct.navbar
     page.drawer         = struct.drawer

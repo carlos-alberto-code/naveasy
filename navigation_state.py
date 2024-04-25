@@ -5,7 +5,6 @@ from module import Module
 class NavigationState:
     # Tiene la responsabilidad de mantener el estado de la navegación.
     
-    index = 0
     _instance = None
 
     # Implementar un singleton para que el estado de la navegación sea único.
@@ -14,16 +13,13 @@ class NavigationState:
             cls._instance = super().__new__(cls)
         return cls._instance
 
-    def __init__(self, drawer_index: int = 0) -> None:
+    def __init__(self) -> None:
         self._modules = []
-        self.drawer_index = drawer_index
+        self._drawer_index = 0
+        self._destination_index = 0
     
     @property
     def modules(self) -> List[Module]:
-        if not self._modules:
-            raise ValueError('No se han asignado módulos a la instancia de NavigationState.')
-        if self.drawer_index >= len(self._modules[self.index].sections):
-            raise ValueError('El índice del cajón es mayor o igual al número de secciones del módulo actual.')
         return self._modules
     
     @modules.setter
@@ -31,9 +27,25 @@ class NavigationState:
         self._modules = modules
     
     @property
+    def destination_index(self) -> int:
+        return self._destination_index
+    
+    @destination_index.setter
+    def destination_index(self, index: int) -> None:
+        self._destination_index = index
+    
+    @property
+    def drawer_index(self) -> int:
+        return self._drawer_index
+    
+    @drawer_index.setter
+    def drawer_index(self, index: int) -> None:
+        self._drawer_index = index
+    
+    @property
     def current_module(self) -> Module:
-        return self._modules[self.index]
+        return self._modules[self._destination_index]
     
     def __repr__(self) -> str:
-        return f'State(index={self.index}, current_module={self.current_module.label})'
+        return f'State(index={self._destination_index}, current_module={self.current_module.label})'
     

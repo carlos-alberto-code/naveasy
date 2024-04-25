@@ -2,43 +2,28 @@ import flet as ft
 from time import sleep
 
 from navigation_state import NavigationState
-
-
-class PageEvents:
-
-    def clear_page(self, event: ft.ControlEvent):
-        event.page.clean()
-    
-    def update_page(self, event: ft.ControlEvent):
-        event.page.update()
-    
-    def open_drawer(self, event: ft.ControlEvent):
-        event.page.drawer.open = True
-        event.page.update()
-    
-    def close_drawer(self, event: ft.ControlEvent):
-        event.page.drawer.open = False
-        event.page.update()
-    
-    def change_appbar_title(self, title: str, event: ft.ControlEvent):
-        event.page.appbar.title = ft.Text(value=title)
+from page_events import PageEvents
     
 
-state = NavigationState()
+navigation_state = NavigationState()
+print(navigation_state.drawer_index)
+print(navigation_state.destination_index)
 e = PageEvents()
 
 
 def update_module(event: ft.ControlEvent):
     e.clear_page(event)
     e.open_drawer(event)
-    state.index = event.control.selected_index
-    module_name = state.current_module.label
+    # Actualizar el estado de la navegación
+    navigation_state._destination_index = event.page.navigation_bar.selected_index # Índice del módulo seleccionado
+
+    module_name = navigation_state.current_module.label
     e.change_appbar_title(str(module_name), event)
-    sections = state.current_module.sections
+    sections = navigation_state.current_module._drawer_sections
     event.page.drawer.controls = sections
-    drawer_index = state.drawer_index
+    drawer_index = navigation_state._drawer_index
     event.page.drawer.selected_index = drawer_index
-    event.page.add(sections[state.drawer_index].content)
+    event.page.add(sections[navigation_state._drawer_index]._content)
     event.page.update()
     sleep(1.5)
     event.page.drawer.open = False
@@ -47,7 +32,7 @@ def update_module(event: ft.ControlEvent):
 
 def update_content(event: ft.ControlEvent):
     event.page.clean()
-    module_sections = state.current_module.sections
+    module_sections = navigation_state.current_module._drawer_sections
     section = module_sections[event.page.drawer.selected_index]
     event.page.add(section.content)
     event.page.update()

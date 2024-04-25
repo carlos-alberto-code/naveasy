@@ -14,7 +14,7 @@ class Section(ft.NavigationDrawerDestination):
 
 class Module(ft.NavigationDestination):
 
-    all_modules = []
+    all_modules: list['Module'] = []
 
     def __init__(self, label: str, icon: str, *sections: Section) -> None:
         super().__init__(label, icon)

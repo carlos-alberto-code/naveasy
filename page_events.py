@@ -19,3 +19,6 @@ class PageEvents:
     
     def change_appbar_title(self, title: str, event: ft.ControlEvent):
         event.page.appbar.title = ft.Text(value=title)
+    
+    def add_to_page(self, content: ft.Control, event: ft.ControlEvent):
+        event.page.add(content)

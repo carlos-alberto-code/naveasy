@@ -2,7 +2,7 @@ from typing import List
 from module import Module
 
 
-class NavigationState:
+class NavigationStateManager:
     # Tiene la responsabilidad de mantener el estado de la navegación.
     
     _instance = None
@@ -27,20 +27,20 @@ class NavigationState:
         self._modules = modules
     
     @property
-    def destination_index(self) -> int:
-        return self._destination_index
-    
-    @destination_index.setter
-    def destination_index(self, index: int) -> None:
-        self._destination_index = index
-    
-    @property
     def drawer_index(self) -> int:
         return self._drawer_index
     
     @drawer_index.setter
     def drawer_index(self, index: int) -> None:
         self._drawer_index = index
+
+    @property
+    def destination_index(self) -> int:
+        return self._destination_index
+    
+    @destination_index.setter
+    def destination_index(self, index: int) -> None:
+        self._destination_index = index
     
     @property
     def current_module(self) -> Module:

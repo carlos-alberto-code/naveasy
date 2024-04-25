@@ -1,11 +1,11 @@
 import flet as ft
 from time import sleep
 
-from navigation_state import NavigationState
+from navigation_state import NavigationStateManager
 from page_events import PageEvents
     
 
-navigation_state = NavigationState()
+navigation_state = NavigationStateManager()
 print(navigation_state.drawer_index)
 print(navigation_state.destination_index)
 e = PageEvents()
